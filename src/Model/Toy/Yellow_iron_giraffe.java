@@ -8,10 +8,10 @@ public class Yellow_iron_giraffe extends Toy {
 		super();
 	}
 	
-	@Override
-	public int drawing_of_toys() {
-		return 0;
-	}
+//	@Override
+//	public int drawing_of_toys() {
+//		return 0;
+//	}
 	
 	public Yellow_iron_giraffe(String name, int popularity, int size, int price, String material) {
 		super(name, popularity, size, price, material);

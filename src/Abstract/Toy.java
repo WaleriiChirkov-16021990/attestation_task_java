@@ -2,7 +2,7 @@ package Abstract;
 
 import java.util.Objects;
 
-public abstract class Toy extends Toy_store<Toy> {
+public abstract class Toy {
 	private static int ID = 0;
 	private int ID_toy;
 	private String name;

@@ -15,9 +15,14 @@ public class Big_boss_red_cat extends Toy {
 		super();
 	}
 	
-	@Override
-	public int drawing_of_toys() {
-		return 0;
-	}
+//	@Override
+//	public int drawing_of_toys() {
+//		return 0;
+//	}
+//
+//	@Override
+//	public void generate_chance_drop(Toy toy, int min, int max) {
+//
+//	}
 	
 }

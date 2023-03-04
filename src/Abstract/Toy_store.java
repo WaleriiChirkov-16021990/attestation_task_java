@@ -10,7 +10,7 @@ import UI.Input_gamer;
 
 import java.util.*;
 
-public abstract class Toy_store<T extends Toy> {
+public abstract class Toy_store<T> {
 	
 	private ArrayList<HashMap<T,ArrayList<Integer>>> info_store; // ArrayList<Integer> = [price,quantity,chance_drop]
 	private LinkedList<Toy> big_boss_red_cat;
@@ -26,6 +26,7 @@ public abstract class Toy_store<T extends Toy> {
 	}
 	
 	public Toy_store() {
+		this.info_store = new ArrayList<>();
 		this.big_boss_red_cat = new LinkedList<>();
 		this.gray_bear_mila = new LinkedList<>();
 		this.losk_black_snake = new LinkedList<>();

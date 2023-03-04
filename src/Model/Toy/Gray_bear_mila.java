@@ -12,8 +12,8 @@ public class Gray_bear_mila extends Toy {
 		super();
 	}
 	
-	@Override
-	public int drawing_of_toys() {
-		return 0;
-	}
+//	@Override
+//	public int drawing_of_toys() {
+//		return 0;
+//	}
 }
