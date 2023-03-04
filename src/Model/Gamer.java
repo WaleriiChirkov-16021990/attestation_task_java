@@ -6,6 +6,7 @@ import Present.Printer_txt;
 import UI.Input_gamer;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Gamer<T extends Toy>   extends Human {
 	private ArrayList<T> won;
@@ -53,5 +54,26 @@ public class Gamer<T extends Toy>   extends Human {
 	
 	public void setStep(boolean step) {
 		this.step = step;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Gamer<?> gamer)) return false;
+		if (!super.equals(o)) return false;
+		return isStep() == gamer.isStep() && Objects.equals(getWon(), gamer.getWon());
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(super.hashCode(), getWon(), isStep());
+	}
+	
+	@Override
+	public String toString() {
+		return "Gamer{" +
+				"won=" + won +
+				", step=" + step +
+				'}';
 	}
 }

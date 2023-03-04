@@ -11,13 +11,21 @@ public abstract class Toy extends Toy_store<Toy> {
 	private int price;
 	
 	
-	public Toy(String name, int popularity, int size, int price) {
+	public Toy(String name, int popularity, int size, int price, String material) {
 		this.ID_toy = this.ID + 1;
 		this.name = name;
 		this.popularity = popularity;
 		this.size = size;
 		this.price = price;
 		this.ID += 1;
+	}
+	
+	public Toy(Toy toy){
+		this.ID_toy = toy.getID_toy();
+		this.name = toy.getName();
+		this.popularity = toy.getPopularity();
+		this.size = toy.getSize();
+		this.price = toy.getPrice();
 	}
 	
 	public Toy() {

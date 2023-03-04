@@ -1,9 +1,12 @@
 package Model;
 
 import Abstract.Toy;
+import Model.Toy.Big_boss_red_cat;
 import Present.Printer_txt;
 import UI.Input_gamer;
 import UI.Txt_interface;
+
+import java.util.Dictionary;
 
 public class Application {
 	private Gamer<Toy> user;
@@ -41,6 +44,7 @@ public class Application {
 	}
 	
 	public void run_() {
+//		this.getMy_store().add_toy(Dictionary<new Big_boss_red_cat(),  >);
 		String x = null;
 		this.getUser().full_data_user();
 		new Printer_txt(new Txt_interface().getEnter()).print();
@@ -54,7 +58,7 @@ public class Application {
 					if (x.toLowerCase().equals("1")) {
 						this.getUser().setStep(this.getUser().play(1));
 						if (this.getUser().isStep()) {
-							
+//							this.getMy_store().generate_chance_drop();
 						}
 					} else if (x.toLowerCase().equals("2")) {
 						
