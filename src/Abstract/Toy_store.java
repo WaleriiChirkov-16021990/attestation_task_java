@@ -1,8 +1,12 @@
 package Abstract;
 
+import java.util.ArrayList;
+import java.util.Dictionary;
 import java.util.Objects;
 
-public abstract class Toy_store {
+public abstract class Toy_store<T extends Toy> {
+	
+//	private ArrayList<Dictionary<T,Dictionary<Integer,Integer>>> db_store;
 	private String name_toy_1;
 	private String name_toy_2;
 	private String name_toy_3;
@@ -29,6 +33,7 @@ public abstract class Toy_store {
 		this.quantity_toy_2 = quantity_toy_2;
 		this.quantity_toy_3 = quantity_toy_3;
 		this.quantity_toy_4 = quantity_toy_4;
+//		this.db_store = new ArrayList<>();
 	}
 	
 	public Toy_store() {

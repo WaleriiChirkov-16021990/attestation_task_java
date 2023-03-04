@@ -9,12 +9,12 @@ public class Input_gamer {
 	private Scanner scanner;
 	private String input;
 	
-	public Input_gamer(String command) {
-		this.command = command;
+	public Input_gamer() {
 		this.scanner = new Scanner(System.in);
 	}
 	
-	public String get_input(){
+	public String get_input(String command){
+		this.command = command;
 		new Printer_txt(this.getCommand()).print();
 		this.setInput(this.getScanner().nextLine());
 		return this.getInput();

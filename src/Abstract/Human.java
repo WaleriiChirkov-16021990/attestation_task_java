@@ -61,5 +61,5 @@ public abstract class Human {
 		this.money = money;
 	}
 	
-	public abstract int play (int bet);
+	public abstract boolean play (int bet);
 }

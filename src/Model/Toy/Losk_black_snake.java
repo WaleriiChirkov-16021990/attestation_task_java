@@ -1,4 +1,4 @@
-package Model;
+package Model.Toy;
 
 import Abstract.Toy;
 
@@ -9,5 +9,10 @@ public class Losk_black_snake extends Toy {
 	}
 	
 	public Losk_black_snake() {
+	}
+	
+	@Override
+	public int drawing_of_toys() {
+		return 0;
 	}
 }

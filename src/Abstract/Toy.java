@@ -2,23 +2,27 @@ package Abstract;
 
 import java.util.Objects;
 
-public abstract class Toy {
+public abstract class Toy extends Toy_store<Toy> {
+	private static int ID = 0;
+	private int ID_toy;
 	private String name;
 	private int popularity;
 	private int size;
 	private int price;
-	private String material;
 	
 	
-	public Toy(String name, int popularity, int size, int price, String material) {
+	public Toy(String name, int popularity, int size, int price) {
+		this.ID_toy = this.ID + 1;
 		this.name = name;
 		this.popularity = popularity;
 		this.size = size;
 		this.price = price;
-		this.material = material;
+		this.ID += 1;
 	}
 	
 	public Toy() {
+		this.ID_toy = this.ID + 1;
+		this.ID += 1;
 	}
 	
 	public String getName() {
@@ -53,12 +57,12 @@ public abstract class Toy {
 		this.price = price;
 	}
 	
-	public String getMaterial() {
-		return material;
+	public int getID_toy() {
+		return ID_toy;
 	}
 	
-	public void setMaterial(String material) {
-		this.material = material;
+	public void setID_toy(int ID_toy) {
+		this.ID_toy = ID_toy;
 	}
 	
 	@Override
@@ -68,7 +72,6 @@ public abstract class Toy {
 				", popularity=" + popularity +
 				", size=" + size +
 				", price=" + price +
-				", material='" + material + '\'' +
 				'}';
 	}
 	
@@ -76,11 +79,11 @@ public abstract class Toy {
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (!(o instanceof Toy toy)) return false;
-		return getPopularity() == toy.getPopularity() && getSize() == toy.getSize() && getPrice() == toy.getPrice() && Objects.equals(getName(), toy.getName()) && Objects.equals(getMaterial(), toy.getMaterial());
+		return getPopularity() == toy.getPopularity() && getSize() == toy.getSize() && getPrice() == toy.getPrice() && Objects.equals(getName(), toy.getName());
 	}
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(getName(), getPopularity(), getSize(), getPrice(), getMaterial());
+		return Objects.hash(getName(), getPopularity(), getSize(), getPrice());
 	}
 }
