@@ -5,28 +5,28 @@ import Abstract.Toy;
 import Present.Printer_txt;
 import UI.Input_gamer;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Objects;
 
 public class Gamer<T extends Toy>   extends Human {
-	private ArrayList<T> won;
+	private LinkedList<T> won;
 	private boolean step;
 	
 	public Gamer(String name, int luck, int money) {
 		super(name, luck, money);
-		this.setWon(new ArrayList<T>());
+		this.setWon(new LinkedList<T>());
 	}
 	
 	public Gamer() {
 		super();
-		this.setWon(new ArrayList<T>());
+		this.setWon(new LinkedList<>());
 	}
 	
-	public ArrayList<T> getWon() {
+	public LinkedList<T> getWon() {
 		return won;
 	}
 	
-	public void setWon(ArrayList<T> won) {
+	public void setWon(LinkedList<T> won) {
 		this.won = won;
 	}
 	

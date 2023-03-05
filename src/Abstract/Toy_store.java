@@ -1,6 +1,7 @@
 package Abstract;
 
 import File_writer.Writer;
+import Model.Gamer;
 import Model.Toy.Big_boss_red_cat;
 import Model.Toy.Gray_bear_mila;
 import Model.Toy.Losk_black_snake;
@@ -10,17 +11,17 @@ import UI.Input_gamer;
 
 import java.util.*;
 
-public abstract class Toy_store<T> {
+public abstract class Toy_store<T extends Toy> {
 	
 	private ArrayList<Integer> info_store_cat; // ArrayList<Integer> = [price,quantity,chance_drop]
 	private ArrayList<Integer> info_store_mila; // ArrayList<Integer> = [price,quantity,chance_drop]
 	private ArrayList<Integer> info_store_snake; // ArrayList<Integer> = [price,quantity,chance_drop]
 	private ArrayList<Integer> info_store_giraffe; // ArrayList<Integer> = [price,quantity,chance_drop]
-	private LinkedList<Toy> big_boss_red_cat;
-	private LinkedList<Toy> gray_bear_mila;
-	private LinkedList<Toy> losk_black_snake;
-	private LinkedList<Toy> yellow_iron_giraffe;
-	private LinkedList<Toy> other;
+	private LinkedList<T> big_boss_red_cat;
+	private LinkedList<T> gray_bear_mila;
+	private LinkedList<T> losk_black_snake;
+	private LinkedList<T> yellow_iron_giraffe;
+	private LinkedList<T> other;
 	
 	
 	public Toy_store() {
@@ -35,7 +36,7 @@ public abstract class Toy_store<T> {
 		this.other = new LinkedList<>();
 	}
 	
-	public void add_toy(Toy rt) {
+	public void add_toy(T rt) {
 //		boolean news = true;
 		if(rt instanceof Big_boss_red_cat){
 			this.getBig_boss_red_cat().add(rt);
@@ -55,32 +56,33 @@ public abstract class Toy_store<T> {
 	}
 	
 	
-	public void drop_toy(Toy rt){
+	public void drop_toy(T rt){
 		if(rt instanceof Big_boss_red_cat){
 			if (this.getBig_boss_red_cat().size() > 0) {
-				new Writer<Toy>(this.getBig_boss_red_cat().removeFirst()).write_toy_drop();
+				new Writer<Toy>(rt).write_toy_drop();
 			}
 		} else if (rt instanceof Gray_bear_mila) {
 			if (this.getGray_bear_mila().size() > 0) {
-				new Writer<Toy>(this.getGray_bear_mila().removeFirst()).write_toy_drop();
+				new Writer<Toy>(rt).write_toy_drop();
 			}
 		} else if (rt instanceof Losk_black_snake) {
 			if (this.getLosk_black_snake().size() > 0) {
-				new Writer<Toy>(this.getLosk_black_snake().removeFirst()).write_toy_drop();
+				new Writer<Toy>(rt).write_toy_drop();
+//				this.getLosk_black_snake().removeFirst()
 			}
 		} else if (rt instanceof Yellow_iron_giraffe) {
 			if (this.getYellow_iron_giraffe().size() > 0){
-				new Writer<Toy>(this.getYellow_iron_giraffe().removeFirst()).write_toy_drop();
+				new Writer<Toy>(rt).write_toy_drop();
 			}
 		} else {
 			if (this.getOther().size() > 0){
-				new Writer<Toy>(this.getOther().removeFirst()).write_toy_drop();
+				new Writer<Toy>(rt).write_toy_drop();
 			}
 		}
 	}
 	
 	
-	public ArrayList<Integer> search_toy_info(Toy toy){
+	public ArrayList<Integer> search_toy_info(T toy){
 		ArrayList<Integer> toy1 = new ArrayList<>();
 		if (toy instanceof Big_boss_red_cat){
 			toy1 = this.info_store_cat;
@@ -94,23 +96,7 @@ public abstract class Toy_store<T> {
 		return toy1;
 	}
 	
-//	public void add_new_toys(Toy toy){
-//		ArrayList<Integer> temp = new ArrayList<>();
-//		Input_gamer input_gamer = new Input_gamer();
-//		new Printer_txt("Введите новую цену для этих игрушек").print();
-//		int price = input_gamer.getScanner().nextInt();
-//		temp.add(0,price);
-//		new Printer_txt("Введите оставшееся количество игрушек").print();
-//		int quantity = input_gamer.getScanner().nextInt();
-//		temp.add(1,1);
-//		new Printer_txt("Введите новую вероятность выпадения этих игрушек (1-100)").print();
-//		int chance = input_gamer.getScanner().nextInt();
-//		temp.add(1,chance);
-//		HashMap<T,ArrayList<Integer>> D_temp = new HashMap<T, ArrayList<Integer>>();
-//		D_temp.put((T) toy,temp);
-//		this.getInfo_store().add(0,D_temp);
-//	}
-	public void edit_toy_price(Toy toy){
+	public void edit_toy_price(T toy){
 		ArrayList<Integer> search = search_toy_info(toy);
 		if(search != null){
 			Input_gamer input_gamer = new Input_gamer();
@@ -130,7 +116,7 @@ public abstract class Toy_store<T> {
 			new Printer_txt("Такой позиции нет!").print();
 		}
 	}
-	public void edit_toy_quantity(Toy toy){
+	public void edit_toy_quantity(T toy){
 		ArrayList<Integer> search = search_toy_info(toy);
 		if(search != null){
 			Input_gamer input_gamer = new Input_gamer();
@@ -151,7 +137,7 @@ public abstract class Toy_store<T> {
 			new Printer_txt("Такой позиции нет!").print();
 		}
 	}
-	public void edit_toy_chance(Toy toy){
+	public void edit_toy_chance(T toy){
 		ArrayList<Integer> search = search_toy_info(toy);
 		if(search != null) {
 			Input_gamer input_gamer = new Input_gamer();
@@ -173,46 +159,46 @@ public abstract class Toy_store<T> {
 	}
 	
 	
-	public abstract int drawing_of_toys(); // реализуем в каждом магазине магазине
-	public abstract void generate_chance_drop(Toy toy, int min, int max); // и это
+	public abstract LinkedList<T> drawing_of_toys(Gamer<T> gamer, int bet, int user_step); // реализуем в каждом магазине магазине
+	public abstract ArrayList<Integer> generate_chance_drop(Gamer<T> gamer, Toy toy, int bet); // и это
 	
-	public LinkedList<Toy> getBig_boss_red_cat() {
+	public LinkedList<T> getBig_boss_red_cat() {
 		return big_boss_red_cat;
 	}
 	
-	public void setBig_boss_red_cat(LinkedList<Toy> big_boss_red_cat) {
+	public void setBig_boss_red_cat(LinkedList<T> big_boss_red_cat) {
 		this.big_boss_red_cat = big_boss_red_cat;
 	}
 	
-	public LinkedList<Toy> getGray_bear_mila() {
+	public LinkedList<T> getGray_bear_mila() {
 		return gray_bear_mila;
 	}
 	
-	public void setGray_bear_mila(LinkedList<Toy> gray_bear_mila) {
+	public void setGray_bear_mila(LinkedList<T> gray_bear_mila) {
 		this.gray_bear_mila = gray_bear_mila;
 	}
 	
-	public LinkedList<Toy> getLosk_black_snake() {
+	public LinkedList<T> getLosk_black_snake() {
 		return losk_black_snake;
 	}
 	
-	public void setLosk_black_snake(LinkedList<Toy> losk_black_snake) {
+	public void setLosk_black_snake(LinkedList<T> losk_black_snake) {
 		this.losk_black_snake = losk_black_snake;
 	}
 	
-	public LinkedList<Toy> getYellow_iron_giraffe() {
+	public LinkedList<T> getYellow_iron_giraffe() {
 		return yellow_iron_giraffe;
 	}
 	
-	public void setYellow_iron_giraffe(LinkedList<Toy> yellow_iron_giraffe) {
+	public void setYellow_iron_giraffe(LinkedList<T> yellow_iron_giraffe) {
 		this.yellow_iron_giraffe = yellow_iron_giraffe;
 	}
 	
-	public LinkedList<Toy> getOther() {
+	public LinkedList<T> getOther() {
 		return other;
 	}
 	
-	public void setOther(LinkedList<Toy> other) {
+	public void setOther(LinkedList<T> other) {
 		this.other = other;
 	}
 	

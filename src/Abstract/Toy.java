@@ -8,15 +8,13 @@ public abstract class Toy {
 	private String name;
 	private int popularity;
 	private int size;
-	private int price;
 	
 	
-	public Toy(String name, int popularity, int size, int price, String material) {
+	public Toy(String name, int popularity, int size, String material) {
 		this.ID_toy = this.ID + 1;
 		this.name = name;
 		this.popularity = popularity;
 		this.size = size;
-		this.price = price;
 		this.ID += 1;
 	}
 	
@@ -25,7 +23,6 @@ public abstract class Toy {
 		this.name = toy.getName();
 		this.popularity = toy.getPopularity();
 		this.size = toy.getSize();
-		this.price = toy.getPrice();
 	}
 	
 	public Toy() {
@@ -57,14 +54,6 @@ public abstract class Toy {
 		this.size = size;
 	}
 	
-	public int getPrice() {
-		return price;
-	}
-	
-	public void setPrice(int price) {
-		this.price = price;
-	}
-	
 	public int getID_toy() {
 		return ID_toy;
 	}
@@ -79,7 +68,7 @@ public abstract class Toy {
 				"name='" + name + '\'' +
 				", popularity=" + popularity +
 				", size=" + size +
-				", price=" + price +
+				", ID=" + ID_toy +
 				'}';
 	}
 	
@@ -87,11 +76,11 @@ public abstract class Toy {
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (!(o instanceof Toy toy)) return false;
-		return getPopularity() == toy.getPopularity() && getSize() == toy.getSize() && getPrice() == toy.getPrice() && Objects.equals(getName(), toy.getName());
+		return getPopularity() == toy.getPopularity() && getSize() == toy.getSize() && Objects.equals(getName(), toy.getName());
 	}
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(getName(), getPopularity(), getSize(), getPrice());
+		return Objects.hash(getName(), getPopularity(), getSize());
 	}
 }
