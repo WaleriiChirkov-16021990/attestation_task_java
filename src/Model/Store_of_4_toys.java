@@ -6,6 +6,8 @@ import Model.Toy.Big_boss_red_cat;
 import Model.Toy.Gray_bear_mila;
 import Model.Toy.Losk_black_snake;
 import Model.Toy.Yellow_iron_giraffe;
+import Present.Printer_txt;
+import UI.Txt_interface;
 
 import java.util.*;
 
@@ -29,20 +31,24 @@ public class Store_of_4_toys<T extends Toy> extends Toy_store {
 		HashSet<Integer> snake = generate_chance_random(snake_losk);
 		HashSet<Integer> giraffe = generate_chance_random(giraffe_iron);
 		if (cats.contains(step_user)){
+			new Printer_txt(new Txt_interface().getYou_win()).print();
 			temp.add((T) this.getBig_boss_red_cat().peekFirst());
 			this.drop_toy((T) this.getBig_boss_red_cat().pollFirst());
 			this.getInfo_store_cat().set(1, cats_big_boss.get(1) - 1);
 		}
 		else if (mila.contains(step_user)) {
+			new Printer_txt(new Txt_interface().getYou_win()).print();
 			temp.add((T) this.getGray_bear_mila().peekFirst());
 			this.drop_toy((T) this.getGray_bear_mila().pollFirst());
 			this.getInfo_store_mila().set(1, mila_bear.get(1) - 1);
 		}
 		if (snake.contains(step_user)) {
+			new Printer_txt(new Txt_interface().getYou_win()).print();
 			temp.add((T) this.getLosk_black_snake().peekFirst());
 			this.drop_toy((T) this.getLosk_black_snake().pollFirst());
 			this.getInfo_store_snake().set(1, snake_losk.get(1) - 1);
 		} else if (giraffe.contains(step_user)) {
+			new Printer_txt(new Txt_interface().getYou_win()).print();
 			temp.add((T) this.getYellow_iron_giraffe().peekFirst());
 			this.drop_toy((T) this.getYellow_iron_giraffe().pollFirst());
 			this.getInfo_store_giraffe().set(1, giraffe_iron.get(1) - 1);
@@ -74,7 +80,7 @@ public class Store_of_4_toys<T extends Toy> extends Toy_store {
 	public HashSet<Integer> generate_chance_random(ArrayList<Integer> data){
 		HashSet<Integer> chance_toy = new HashSet<>();
 		Random rnd = new Random();
-		while (chance_toy.size() <= data.get(3) ){
+		while (chance_toy.size() <= data.get(2) ){
 			int temp = rnd.nextInt(1,101);
 			chance_toy.add(temp);
 		}

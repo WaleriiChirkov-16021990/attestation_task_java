@@ -17,9 +17,6 @@ public class Input_gamer {
 		this.command = command;
 		new Printer_txt(this.getCommand()).print();
 		this.setInput(this.scanner.nextLine());
-//		System.out.println("help");
-//		System.out.println("he");
-//		return this.getInput();
 	}
 	
 	public boolean is_number(){

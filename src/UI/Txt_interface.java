@@ -10,7 +10,6 @@ public class Txt_interface {
 	private final String game = "Попытаться выйграть супер игрушку? ";
 	private final String last_exit = "Приходите к нам ещё!";
 	private final String now_exit = "Обязательно зайдите до конца недели, у нас сейчас лотерея, вы можете выйграть крутую игрушку! ";
-//	private final String I_looked_at_the_prices = "Желаете проверить свою удачу? многим удалось сегодня выйграть призы.";
 	private final String menu =         "\n1. Положить 1 монету. /" +
 										"\n2. Положить 5 монет. /" +
 										"\n3. Положить 10 монет.     /" +
