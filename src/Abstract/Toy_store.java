@@ -12,7 +12,10 @@ import java.util.*;
 
 public abstract class Toy_store<T> {
 	
-	private ArrayList<HashMap<T,ArrayList<Integer>>> info_store; // ArrayList<Integer> = [price,quantity,chance_drop]
+	private ArrayList<Integer> info_store_cat; // ArrayList<Integer> = [price,quantity,chance_drop]
+	private ArrayList<Integer> info_store_mila; // ArrayList<Integer> = [price,quantity,chance_drop]
+	private ArrayList<Integer> info_store_snake; // ArrayList<Integer> = [price,quantity,chance_drop]
+	private ArrayList<Integer> info_store_giraffe; // ArrayList<Integer> = [price,quantity,chance_drop]
 	private LinkedList<Toy> big_boss_red_cat;
 	private LinkedList<Toy> gray_bear_mila;
 	private LinkedList<Toy> losk_black_snake;
@@ -20,108 +23,36 @@ public abstract class Toy_store<T> {
 	private LinkedList<Toy> other;
 	
 	
-	public Toy_store(ArrayList<HashMap<T, ArrayList<Integer>>> db_store) {
-		this();
-		this.info_store = db_store;
-	}
-	
 	public Toy_store() {
-		this.info_store = new ArrayList<>();
+		this.info_store_cat = new ArrayList<>(Arrays.asList(0,0,0));
+		this.info_store_mila = new ArrayList<>(Arrays.asList(0,0,0));
+		this.info_store_snake = new ArrayList<>(Arrays.asList(0,0,0));
+		this.info_store_giraffe = new ArrayList<>(Arrays.asList(0,0,0));
 		this.big_boss_red_cat = new LinkedList<>();
 		this.gray_bear_mila = new LinkedList<>();
 		this.losk_black_snake = new LinkedList<>();
 		this.yellow_iron_giraffe = new LinkedList<>();
+		this.other = new LinkedList<>();
 	}
 	
 	public void add_toy(Toy rt) {
-		boolean news = true;
+//		boolean news = true;
 		if(rt instanceof Big_boss_red_cat){
 			this.getBig_boss_red_cat().add(rt);
-			if (this.getInfo_store().size() > 0) {
-				for (HashMap<T, ArrayList<Integer>> VR:
-				     this.getInfo_store()) {
-					if (VR.keySet().contains(rt)) {
-						VR.get(rt).set(1,this.getBig_boss_red_cat().size());
-						news = false;
-					}
-				}
-				if (news) {
-					this.add_new_toys(rt);
-				}
-			}
+			this.info_store_cat.set(1,this.getBig_boss_red_cat().size());
 		} else if (rt instanceof Gray_bear_mila) {
 			this.getGray_bear_mila().add(rt);
-			if (this.getInfo_store().size() > 0) {
-				for (HashMap<T, ArrayList<Integer>> VR:
-						this.getInfo_store()) {
-					if (VR.keySet().contains(rt)) {
-						VR.get(rt).set(1,this.getGray_bear_mila().size());
-						news = false;
-					}
-				}
-				if (news) {
-					this.add_new_toys(rt);
-				}
-			}
+			this.info_store_mila.set(1,this.getGray_bear_mila().size());
 		} else if (rt instanceof Losk_black_snake) {
 			this.getLosk_black_snake().add(rt);
-			if (this.getInfo_store().size() > 0) {
-				for (HashMap<T, ArrayList<Integer>> VR:
-						this.getInfo_store()) {
-					if (VR.keySet().contains(rt)) {
-						VR.get(rt).set(1,this.getLosk_black_snake().size());
-						news = false;
-					}
-				}
-				if (news) {
-					this.add_new_toys(rt);
-				}
-			}
+			this.info_store_snake.set(1, this.getLosk_black_snake().size());
 		} else if (rt instanceof Yellow_iron_giraffe) {
 			this.getYellow_iron_giraffe().add(rt);
-			if (this.getInfo_store().size() > 0) {
-				for (HashMap<T, ArrayList<Integer>> VR:
-						this.getInfo_store()) {
-					if (VR.keySet().contains(rt)) {
-						VR.get(rt).set(1,this.getYellow_iron_giraffe().size());
-						news = false;
-					}
-				}
-				if (news) {
-					this.add_new_toys(rt);
-				}
-			}
+			this.info_store_giraffe.set(1, this.getYellow_iron_giraffe().size());
 		} else {
 			this.getOther().add(rt);
-			if (this.getInfo_store().size() > 0) {
-				for (HashMap<T, ArrayList<Integer>> VR:
-						this.getInfo_store()) {
-					if (VR.keySet().contains(rt)) {
-						VR.get(rt).set(1,this.getOther().size());
-						news = false;
-					}
-				}
-				if (news) {
-					this.add_new_toys(rt);
-				}
-			}
 		}
 	}
-	
-	
-//
-//	public void add_mila(Gray_bear_mila rt) {
-//		this.gray_bear_mila.add(rt);
-//	}
-//
-//	public void add_snake(Losk_black_snake rt) {
-//		this.losk_black_snake.add(rt);
-//	}
-//
-//
-//	public void add_giraffe(Yellow_iron_giraffe rt) {
-//		this.yellow_ipon_giraffe.add(rt);
-//	}
 	
 	
 	public void drop_toy(Toy rt){
@@ -147,72 +78,95 @@ public abstract class Toy_store<T> {
 			}
 		}
 	}
-	public ArrayList<HashMap<T, ArrayList<Integer>>> getInfo_store() {
-		return info_store;
-	}
-	
-	public void setInfo_store(ArrayList<HashMap<T, ArrayList<Integer>>> info_store) {
-		this.info_store = info_store;
-	}
 	
 	
-	public HashMap search_toy(Toy toy){
-		HashMap toy1 = null;
-		for (HashMap e:
-		     this.getInfo_store()) {
-			if (e.keySet().contains(toy)){
-				toy1 = e;
-				break;
-			}
+	public ArrayList<Integer> search_toy_info(Toy toy){
+		ArrayList<Integer> toy1 = new ArrayList<>();
+		if (toy instanceof Big_boss_red_cat){
+			toy1 = this.info_store_cat;
+		} else if (toy instanceof Gray_bear_mila){
+			toy1 = this.info_store_mila;
+		} else if(toy instanceof Losk_black_snake){
+			toy1 = this.info_store_snake;
+		} else if (toy instanceof Yellow_iron_giraffe){
+			toy1 = this.info_store_giraffe;
 		}
 		return toy1;
 	}
 	
-	public void add_new_toys(Toy toy){
-		ArrayList<Integer> temp = new ArrayList<>();
-		Input_gamer input_gamer = new Input_gamer();
-		new Printer_txt("Введите новую цену для этих игрушек").print();
-		int price = input_gamer.getScanner().nextInt();
-		temp.add(0,price);
+//	public void add_new_toys(Toy toy){
+//		ArrayList<Integer> temp = new ArrayList<>();
+//		Input_gamer input_gamer = new Input_gamer();
+//		new Printer_txt("Введите новую цену для этих игрушек").print();
+//		int price = input_gamer.getScanner().nextInt();
+//		temp.add(0,price);
 //		new Printer_txt("Введите оставшееся количество игрушек").print();
 //		int quantity = input_gamer.getScanner().nextInt();
-		temp.add(1,1);
-		new Printer_txt("Введите новую вероятность выпадения этих игрушек (1-100)").print();
-		int chance = input_gamer.getScanner().nextInt();
-		temp.add(1,chance);
-		HashMap<T,ArrayList<Integer>> D_temp = new HashMap<T, ArrayList<Integer>>();
-		D_temp.put((T) toy,temp);
-		this.getInfo_store().add(0,D_temp);
-	}
+//		temp.add(1,1);
+//		new Printer_txt("Введите новую вероятность выпадения этих игрушек (1-100)").print();
+//		int chance = input_gamer.getScanner().nextInt();
+//		temp.add(1,chance);
+//		HashMap<T,ArrayList<Integer>> D_temp = new HashMap<T, ArrayList<Integer>>();
+//		D_temp.put((T) toy,temp);
+//		this.getInfo_store().add(0,D_temp);
+//	}
 	public void edit_toy_price(Toy toy){
-		HashMap<Toy,ArrayList<Integer>> search = search_toy(toy);
+		ArrayList<Integer> search = search_toy_info(toy);
 		if(search != null){
 			Input_gamer input_gamer = new Input_gamer();
-			new Printer_txt("Введите новую цену для этих игрушек").print();
-			int price = input_gamer.getScanner().nextInt();
-			search.get(toy).set(0, price);
+			int price = 0;
+			while (true){
+				new Printer_txt("Введите новую цену для игрушек: " + toy.getName()).print();
+				input_gamer.get_input("(введите целую цифру)");
+				if (input_gamer.is_number()){
+					price = Integer.parseInt(input_gamer.getInput());
+					break;
+				} else {
+					new Printer_txt("Вы ввели неизвестную неизвестную цену =) ").print();
+				}
+			}
+			search.set(0, price);
 		} else {
 			new Printer_txt("Такой позиции нет!").print();
 		}
 	}
 	public void edit_toy_quantity(Toy toy){
-		HashMap<Toy,ArrayList<Integer>> search = search_toy(toy);
+		ArrayList<Integer> search = search_toy_info(toy);
 		if(search != null){
 			Input_gamer input_gamer = new Input_gamer();
-			new Printer_txt("Введите оставшееся количество игрушек").print();
-			int quantity = input_gamer.getScanner().nextInt();
-			search.get(toy).set(1, quantity);
+			int quantity = 0;
+			while (true){
+				new Printer_txt("Введите оставшееся количество игрушек: " + toy.getName()).print();
+				input_gamer.get_input("(введите целую цифру)");
+				if (input_gamer.is_number()) {
+					quantity = Integer.parseInt(input_gamer.getInput());
+					break;
+				}
+				else {
+					new Printer_txt("Вы ввели неизвестное количество =) ").print();
+				}
+			}
+			search.set(1, quantity);
 		} else {
 			new Printer_txt("Такой позиции нет!").print();
 		}
 	}
 	public void edit_toy_chance(Toy toy){
-		HashMap<Toy,ArrayList<Integer>> search = search_toy(toy);
-		if(search != null){
+		ArrayList<Integer> search = search_toy_info(toy);
+		if(search != null) {
 			Input_gamer input_gamer = new Input_gamer();
-			new Printer_txt("Введите новую вероятность выпадения этих игрушек").print();
-			int chance = input_gamer.getScanner().nextInt();
-			search.get(toy).set(2, chance);
+			int chance = 0;
+			while (true){
+				new Printer_txt("Введите новую вероятность выпадения этих игрушек: " + toy.getName()).print();
+				input_gamer.get_input("(введите целую цифру)");
+				if (input_gamer.is_number_less_than_100()) {
+					chance = Integer.parseInt(input_gamer.getInput());
+					break;
+				} else {
+					new Printer_txt("Вы ввели неизвестную вероятность =) ").print();
+				}
+			}
+			search.set(2, chance);
 		} else {
 			new Printer_txt("Такой позиции нет!").print();
 		}
@@ -266,23 +220,58 @@ public abstract class Toy_store<T> {
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (!(o instanceof Toy_store<?> toy_store)) return false;
-		return Objects.equals(getInfo_store(), toy_store.getInfo_store()) && Objects.equals(getBig_boss_red_cat(), toy_store.getBig_boss_red_cat()) && Objects.equals(getGray_bear_mila(), toy_store.getGray_bear_mila()) && Objects.equals(getLosk_black_snake(), toy_store.getLosk_black_snake()) && Objects.equals(getYellow_iron_giraffe(), toy_store.getYellow_iron_giraffe()) && Objects.equals(getOther(), toy_store.getOther());
+		return Objects.equals(getInfo_store_cat(), toy_store.getInfo_store_cat()) && Objects.equals(getInfo_store_mila(), toy_store.getInfo_store_mila()) && Objects.equals(getInfo_store_snake(), toy_store.getInfo_store_snake()) && Objects.equals(getInfo_store_giraffe(), toy_store.getInfo_store_giraffe()) && Objects.equals(getBig_boss_red_cat(), toy_store.getBig_boss_red_cat()) && Objects.equals(getGray_bear_mila(), toy_store.getGray_bear_mila()) && Objects.equals(getLosk_black_snake(), toy_store.getLosk_black_snake()) && Objects.equals(getYellow_iron_giraffe(), toy_store.getYellow_iron_giraffe()) && Objects.equals(getOther(), toy_store.getOther());
 	}
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(getInfo_store(), getBig_boss_red_cat(), getGray_bear_mila(), getLosk_black_snake(), getYellow_iron_giraffe(), getOther());
+		return Objects.hash(getInfo_store_cat(), getInfo_store_mila(), getInfo_store_snake(), getInfo_store_giraffe(), getBig_boss_red_cat(), getGray_bear_mila(), getLosk_black_snake(), getYellow_iron_giraffe(), getOther());
 	}
 	
 	@Override
 	public String toString() {
 		return "Toy_store{" +
-				"info_store=" + info_store +
+				"info_store_cat=" + info_store_cat +
+				", info_store_mila=" + info_store_mila +
+				", info_store_snake=" + info_store_snake +
+				", info_store_giraffe=" + info_store_giraffe +
 				", big_boss_red_cat=" + big_boss_red_cat +
 				", gray_bear_mila=" + gray_bear_mila +
 				", losk_black_snake=" + losk_black_snake +
 				", yellow_iron_giraffe=" + yellow_iron_giraffe +
 				", other=" + other +
 				'}';
+	}
+	
+	public ArrayList<Integer> getInfo_store_cat() {
+		return info_store_cat;
+	}
+	
+	public void setInfo_store_cat(ArrayList<Integer> info_store_cat) {
+		this.info_store_cat = info_store_cat;
+	}
+	
+	public ArrayList<Integer> getInfo_store_mila() {
+		return info_store_mila;
+	}
+	
+	public void setInfo_store_mila(ArrayList<Integer> info_store_mila) {
+		this.info_store_mila = info_store_mila;
+	}
+	
+	public ArrayList<Integer> getInfo_store_snake() {
+		return info_store_snake;
+	}
+	
+	public void setInfo_store_snake(ArrayList<Integer> info_store_snake) {
+		this.info_store_snake = info_store_snake;
+	}
+	
+	public ArrayList<Integer> getInfo_store_giraffe() {
+		return info_store_giraffe;
+	}
+	
+	public void setInfo_store_giraffe(ArrayList<Integer> info_store_giraffe) {
+		this.info_store_giraffe = info_store_giraffe;
 	}
 }

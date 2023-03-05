@@ -13,11 +13,28 @@ public class Input_gamer {
 		this.scanner = new Scanner(System.in);
 	}
 	
-	public String get_input(String command){
+	public void get_input(String command){
 		this.command = command;
 		new Printer_txt(this.getCommand()).print();
-		this.setInput(this.getScanner().nextLine());
-		return this.getInput();
+		this.setInput(this.scanner.nextLine());
+//		System.out.println("help");
+//		System.out.println("he");
+//		return this.getInput();
+	}
+	
+	public boolean is_number(){
+		return this.getInput().matches("^\\d+$");
+	}
+	
+	
+	public boolean is_number_less_than_100(){
+		if (this.is_number()){
+			if( Integer.parseInt(this.getInput()) <= 100 && Integer.parseInt(this.getInput()) >= 0){
+				return true;
+			}
+			return false;
+		}
+		return false;
 	}
 	
 	public String getCommand() {

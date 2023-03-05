@@ -10,10 +10,6 @@ public class Gray_bear_mila extends Toy {
 	
 	public Gray_bear_mila() {
 		super();
+		this.setName("Gray_bear_mila");
 	}
-	
-//	@Override
-//	public int drawing_of_toys() {
-//		return 0;
-//	}
 }

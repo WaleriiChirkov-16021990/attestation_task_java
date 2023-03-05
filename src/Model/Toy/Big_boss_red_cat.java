@@ -13,16 +13,6 @@ public class Big_boss_red_cat extends Toy {
 	
 	public Big_boss_red_cat() {
 		super();
+		this.setName("Big_boss_red_cat");
 	}
-	
-//	@Override
-//	public int drawing_of_toys() {
-//		return 0;
-//	}
-//
-//	@Override
-//	public void generate_chance_drop(Toy toy, int min, int max) {
-//
-//	}
-	
 }

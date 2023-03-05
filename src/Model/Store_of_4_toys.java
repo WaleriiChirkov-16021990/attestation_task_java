@@ -2,41 +2,70 @@ package Model;
 
 import Abstract.Toy;
 import Abstract.Toy_store;
+import Model.Toy.Big_boss_red_cat;
+import Model.Toy.Gray_bear_mila;
+import Model.Toy.Losk_black_snake;
+import Model.Toy.Yellow_iron_giraffe;
 
-import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.HashSet;
-import java.util.Random;
+import java.util.*;
 
-public class Store_of_4_toys<T extends Toy_store<Toy>> extends Toy_store {
+public class Store_of_4_toys<T extends Toy> extends Toy_store {
 	
 	private HashSet<Integer> chance_drop;
-	private Store_of_4_toys(ArrayList<Dictionary<T, ArrayList<Integer>>> db_store) {
-		super(db_store);
-	}
 	
 	public Store_of_4_toys() {
 		super();
-	}
-	@Override
-	public void generate_chance_drop(Toy toy, int min, int max){
-		Dictionary<Toy,ArrayList<Integer>> now = (Dictionary<Toy, ArrayList<Integer>>) this.getInfo_store().get(0);
-		int n = now.get(toy).get(2);
-		this.chance_drop = new HashSet<Integer>();
-		Random rnd = new Random();
-		int m = 0;
-		while(n > 0){
-			m = rnd.nextInt(min,max+1);
-			if(!this.chance_drop.contains(m)) {
-				this.chance_drop.add(m);
-				n -= 1;
-			}
-		}
 	}
 	
 	@Override
 	public int drawing_of_toys() {
 		return 0;
+	}
+	
+	public void generate_toy(){
+		Big_boss_red_cat cat1 = new Big_boss_red_cat();
+		Big_boss_red_cat cat2 = new Big_boss_red_cat();
+		Big_boss_red_cat cat3 = new Big_boss_red_cat();
+		Gray_bear_mila mila1 = new Gray_bear_mila();
+		Gray_bear_mila mila2 = new Gray_bear_mila();
+		Gray_bear_mila mila3 = new Gray_bear_mila();
+		Losk_black_snake snake1 = new Losk_black_snake();
+		Losk_black_snake snake2 = new Losk_black_snake();
+		Losk_black_snake snake3 = new Losk_black_snake();
+		Losk_black_snake snake4 = new Losk_black_snake();
+		Losk_black_snake snake5 = new Losk_black_snake();
+		Yellow_iron_giraffe giraffe1 = new Yellow_iron_giraffe();
+		Yellow_iron_giraffe giraffe2 = new Yellow_iron_giraffe();
+		this.add_toy(cat1);
+		this.edit_toy_price(cat1);
+		this.edit_toy_quantity(cat2);
+		this.edit_toy_chance(cat1);
+		this.add_toy(cat2);
+		this.add_toy(cat3);
+		this.add_toy(mila1);
+		this.edit_toy_price(mila1);
+		this.edit_toy_quantity(mila2);
+		this.edit_toy_chance(mila3);
+		this.add_toy(mila2);
+		this.add_toy(mila3);
+		this.add_toy(snake1);
+		this.edit_toy_price(snake1);
+		this.edit_toy_quantity(snake2);
+		this.edit_toy_chance(snake5);
+		this.add_toy(snake2);
+		this.add_toy(snake3);
+		this.add_toy(snake4);
+		this.add_toy(snake5);
+		this.add_toy(giraffe1);
+		this.edit_toy_price(giraffe1);
+		this.edit_toy_quantity(giraffe1);
+		this.edit_toy_chance(giraffe2);
+		this.add_toy(giraffe2);
+	}
+	
+	@Override
+	public void generate_chance_drop(Toy toy, int min, int max) {
+	
 	}
 	
 	public HashSet<Integer> getChance_drop() {

@@ -9,10 +9,8 @@ public class Losk_black_snake extends Toy {
 	}
 	
 	public Losk_black_snake() {
+		super();
+		this.setName("Losk_black_snake");
 	}
 	
-//	@Override
-//	public int drawing_of_toys() {
-//		return 0;
-//	}
 }

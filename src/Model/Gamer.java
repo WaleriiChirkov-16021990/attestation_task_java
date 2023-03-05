@@ -31,10 +31,27 @@ public class Gamer<T extends Toy>   extends Human {
 	}
 	
 	public void  full_data_user(){
-		this.setName(new Input_gamer().get_input("Представьтесь: "));
-		this.setMoney(Integer.parseInt(new Input_gamer().get_input("Сколько у вас в кармане наличных?"))); //
-		this.setLuck(Integer.parseInt(new Input_gamer().get_input("Оцените вашу удачу по 100 бальной шкале: ")));
-		new Printer_txt("Добро пожаловать, Борис!").print();
+		Input_gamer i_am_new_user = new Input_gamer();
+		while (true){
+			i_am_new_user.get_input("Представьтесь: ");
+			this.setName(i_am_new_user.getInput());
+			i_am_new_user.get_input("Сколько у вас в кармане наличных?");
+			if(i_am_new_user.is_number()){
+				this.setMoney(Integer.parseInt(i_am_new_user.getInput())); //
+			} else {
+				new Printer_txt("У вас не может быть столько денег =) введите число, например: 1000 ").print();
+				continue;
+			}
+			i_am_new_user.get_input("Оцените вашу удачу по 100 бальной шкале: ");
+			if (i_am_new_user.is_number_less_than_100()){
+				this.setLuck(Integer.parseInt(i_am_new_user.getInput()));
+			} else {
+				new Printer_txt("В мире не бывает таких неудачников, попробуйте еще раз !").print();
+				continue;
+			}
+			break;
+		}
+		new Printer_txt("Добро пожаловать, " + this.getName() + " !").print();
 	}
 	
 	@Override
