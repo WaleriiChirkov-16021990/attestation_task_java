@@ -11,6 +11,10 @@ public class Txt_interface {
 	private final String you_enter = "Бросайте кость, от 1 до 100 включительно...";
 	private final String exit = "Выйти из магазина?";
 	private final String yes_no  = "y/n ? ";
+	private final String current_money = "Текущий баланс: ";
+	private final String no_credit = "Мы выдаем кредит только в местной валюте!";
+	
+	private final String tablo = "Tablo info of toys: ";
 	private final String game = "Попытаться выйграть супер игрушку? ";
 	private final String last_exit = "Приходите к нам ещё!";
 	private final String now_exit = "Обязательно зайдите до конца недели, у нас сейчас лотерея, вы можете выйграть крутую игрушку! ";
@@ -40,6 +44,18 @@ public class Txt_interface {
 	
 	private final String uoy_looser =   "Попытка не прошла, а деньги списались, вводите числа из диапазона!";
 	private final String error_input  = "Нет такого пункта";
+	
+	public String getTablo() {
+		return tablo;
+	}
+	
+	public String getCurrent_money() {
+		return current_money;
+	}
+	
+	public String getNo_credit() {
+		return no_credit;
+	}
 	
 	public String getCredit() {
 		return credit;

@@ -15,8 +15,8 @@ public class Printer_toy<T extends Toy> extends Toy {
 		this.toys = toys;
 	}
 	
-	public Printer_toy(String name, int popularity, int size, String material) {
-		super(name, popularity, size, material);
+	public Printer_toy(String name, int popularity, int size) {
+		super(name, popularity, size);
 	}
 	
 	/**
