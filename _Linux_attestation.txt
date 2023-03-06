@@ -27,6 +27,6 @@
  1901  cd /etc/crontab
  1902  sudo nano /etc/crontab
 ================================
-3  *    * * *   root    history >> /Documents/history.txt
+3  *    * * *   root   cd /home/waleriy/ && history >> /Documents/history.txt
 ==================================
  1903  history > share/last.txt
