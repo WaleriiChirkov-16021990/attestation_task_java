@@ -71,6 +71,7 @@ public class Application {
 				new Printer_txt(new Txt_interface().getRules_info()).print();
 				while (true) {
 					// данныу выводы информации , иммитируют экран игрового автомата.
+					new Printer_txt(new Txt_interface().getTablo()).print();
 					new Printer_txt(this.getMy_store().getInfo_store_cat().toString()).print();
 					new Printer_txt(this.getMy_store().getInfo_store_mila().toString()).print();
 					new Printer_txt(this.getMy_store().getInfo_store_snake().toString()).print();
@@ -86,7 +87,7 @@ public class Application {
 								new Printer_txt(new Txt_interface().getUoy_looser()).print();
 							}
 						} else {
-							new Printer_txt("Текущий баланс: " + this.getUser().getMoney()).print();
+							new Printer_txt(new Txt_interface().getCurrent_money() + this.getUser().getMoney()).print();
 							new Printer_txt(new Txt_interface().getYou_loose()).print();
 							this.getEnter_gamer().get_input(new Txt_interface().getYes_no());
 							if (this.getEnter_gamer().getInput().equals("y") || this.getEnter_gamer().getInput().equals("yes")){
@@ -95,7 +96,7 @@ public class Application {
 									this.getUser().setMoney(Integer.parseInt(this.getEnter_gamer().getInput()));
 								}
 								else {
-									new Printer_txt("Мы выдаем кредит только в местной валюте").print();
+									new Printer_txt(new Txt_interface().getNo_credit()).print();
 								}
 							}
 						}
@@ -109,7 +110,7 @@ public class Application {
 								new Printer_txt(new Txt_interface().getUoy_looser()).print();
 							}
 						} else {
-							new Printer_txt("Текущий баланс: " + this.getUser().getMoney()).print();
+							new Printer_txt(new Txt_interface().getCurrent_money() + this.getUser().getMoney()).print();
 							new Printer_txt(new Txt_interface().getYou_loose()).print();
 							this.getEnter_gamer().get_input(new Txt_interface().getYes_no());
 							if (this.getEnter_gamer().getInput().equals("y") || this.getEnter_gamer().getInput().equals("yes")){
@@ -118,7 +119,7 @@ public class Application {
 									this.getUser().setMoney(Integer.parseInt(this.getEnter_gamer().getInput()));
 								}
 								else {
-									new Printer_txt("Мы выдаем кредит только в местной валюте").print();
+									new Printer_txt(new Txt_interface().getNo_credit()).print();
 								}
 							}
 						}
@@ -132,7 +133,7 @@ public class Application {
 								new Printer_txt(new Txt_interface().getUoy_looser()).print();
 							}
 						} else {
-							new Printer_txt("Текущий баланс: " + this.getUser().getMoney()).print();
+							new Printer_txt(new Txt_interface().getCurrent_money() + this.getUser().getMoney()).print();
 							new Printer_txt(new Txt_interface().getYou_loose()).print();
 							this.getEnter_gamer().get_input(new Txt_interface().getYes_no());
 							if (this.getEnter_gamer().getInput().equals("y") || this.getEnter_gamer().getInput().equals("yes")){
@@ -141,7 +142,7 @@ public class Application {
 									this.getUser().setMoney(Integer.parseInt(this.getEnter_gamer().getInput()));
 								}
 								else {
-									new Printer_txt("Мы выдаем кредит только в местной валюте").print();
+									new Printer_txt(new Txt_interface().getNo_credit()).print();
 								}
 							}
 						}
@@ -157,7 +158,18 @@ public class Application {
 									new Printer_txt(new Txt_interface().getUoy_looser()).print();
 								}
 							} else {
+								new Printer_txt(new Txt_interface().getCurrent_money() + this.getUser().getMoney()).print();
 								new Printer_txt(new Txt_interface().getYou_loose()).print();
+								this.getEnter_gamer().get_input(new Txt_interface().getYes_no());
+								if (this.getEnter_gamer().getInput().equals("y") || this.getEnter_gamer().getInput().equals("yes")){
+									this.getEnter_gamer().get_input(new Txt_interface().getCredit());
+									if (this.getEnter_gamer().is_number()){
+										this.getUser().setMoney(Integer.parseInt(this.getEnter_gamer().getInput()));
+									}
+									else {
+										new Printer_txt(new Txt_interface().getNo_credit()).print();
+									}
+								}
 							}
 						} else {
 							new Printer_txt("Вы ввели не число!");
