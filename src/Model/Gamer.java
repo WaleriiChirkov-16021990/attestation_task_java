@@ -8,6 +8,10 @@ import UI.Input_gamer;
 import java.util.LinkedList;
 import java.util.Objects;
 
+/**
+ * класс игроков
+ * @param <T> игроки связаны(ограничены) наследниками(игрушками) класса Toy
+ */
 public class Gamer<T extends Toy>   extends Human {
 	private LinkedList<T> won;
 	private boolean step;
@@ -30,6 +34,9 @@ public class Gamer<T extends Toy>   extends Human {
 		this.won = won;
 	}
 	
+	/**
+	 * метод заполнения данных игрока, прием данным осществляется вводом в консоль.
+	 */
 	public void  full_data_user(){
 		Input_gamer i_am_new_user = new Input_gamer();
 		while (true){

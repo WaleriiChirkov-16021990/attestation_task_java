@@ -2,6 +2,9 @@ package Abstract;
 
 import java.util.Objects;
 
+/**
+ * акбстракцию людей для реализации этой задачи
+ */
 public abstract class Human {
 	private String name;
 	private int luck;

@@ -4,8 +4,8 @@ import Abstract.Toy;
 
 public class Losk_black_snake extends Toy {
 	
-	public Losk_black_snake(String name, int popularity, int size, String material) {
-		super(name, popularity, size, material);
+	public Losk_black_snake(String name, int popularity, int size) {
+		super(name, popularity, size);
 	}
 	
 	public Losk_black_snake() {

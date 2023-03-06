@@ -7,8 +7,8 @@ public class Big_boss_red_cat extends Toy {
 	
 	
 	
-	public Big_boss_red_cat(String name, int popularity, int size, String material) {
-		super(name, popularity, size, material);
+	public Big_boss_red_cat(String name, int popularity, int size) {
+		super(name, popularity, size);
 	}
 	
 	public Big_boss_red_cat() {

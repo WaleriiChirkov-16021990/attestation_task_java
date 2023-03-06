@@ -2,6 +2,9 @@ package Abstract;
 
 import java.util.Objects;
 
+/**
+ * абстракция игрушек для этой задачи
+ */
 public abstract class Toy {
 	private static int ID = 0;
 	private int ID_toy;
@@ -10,7 +13,7 @@ public abstract class Toy {
 	private int size;
 	
 	
-	public Toy(String name, int popularity, int size, String material) {
+	public Toy(String name, int popularity, int size) {
 		this.ID_toy = this.ID + 1;
 		this.name = name;
 		this.popularity = popularity;

@@ -4,8 +4,8 @@ import Abstract.Toy;
 
 public class Gray_bear_mila extends Toy {
 	
-	public Gray_bear_mila(String name, int popularity, int size, String material) {
-		super(name, popularity, size, material);
+	public Gray_bear_mila(String name, int popularity, int size) {
+		super(name, popularity, size);
 	}
 	
 	public Gray_bear_mila() {

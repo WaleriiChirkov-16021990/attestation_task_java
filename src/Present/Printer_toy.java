@@ -4,6 +4,10 @@ import Abstract.Toy;
 
 import java.util.LinkedList;
 
+/**
+ * класс печати игрушек(информации о них) в консоль
+ * @param <T> только наследникии класса Toy
+ */
 public class Printer_toy<T extends Toy> extends Toy {
 	private LinkedList<T> toys;
 	
@@ -15,6 +19,9 @@ public class Printer_toy<T extends Toy> extends Toy {
 		super(name, popularity, size, material);
 	}
 	
+	/**
+	 * метод печатает коллекцию игрушек в консоль
+	 */
 	public void printe_linked(){
 		for (Toy a:
 		     this.getToys()) {

@@ -11,7 +11,7 @@ public class Yellow_iron_giraffe extends Toy {
 		this.setSize(10);
 	}
 	
-	public Yellow_iron_giraffe(String name, int popularity, int size, String material) {
-		super(name, popularity, size, material);
+	public Yellow_iron_giraffe(String name, int popularity, int size) {
+		super(name, popularity, size);
 	}
 }

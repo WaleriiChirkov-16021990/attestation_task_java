@@ -11,6 +11,10 @@ import UI.Input_gamer;
 
 import java.util.*;
 
+/**
+ * абстракция магазина для данной задачи
+ * @param <T> ограничение наследниками класса Toy
+ */
 public abstract class Toy_store<T extends Toy> {
 	
 	private ArrayList<Integer> info_store_cat; // ArrayList<Integer> = [price,quantity,chance_drop]

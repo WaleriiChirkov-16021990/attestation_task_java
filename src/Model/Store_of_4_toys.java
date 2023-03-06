@@ -19,6 +19,15 @@ public class Store_of_4_toys<T extends Toy> extends Toy_store {
 		super();
 	}
 	
+	/**
+	 * а вот и описание процедуры розыгрыша, каджый ход уникален, каждая ставка обновляет шансы игрока на выйгрыш.
+	 * максимум игрок за раз выигрывает 2 игрушки, а вообще , может и не одной, все зависит от удачи самого игрок,
+	 * ставки игрока и шанса установленного магазином
+	 * @param gamer игрок и его аура
+	 * @param bet ставка игрока
+	 * @param step_user номер выйгранный игроком для выйгрыша
+	 * @return всё или ничего, игрушка или дырка от бублика.
+	 */
 	@Override  // розыгрыш
 	public LinkedList<T> drawing_of_toys(Gamer gamer, int bet, int step_user) {
 		LinkedList<T> temp = new LinkedList<>();
@@ -56,6 +65,13 @@ public class Store_of_4_toys<T extends Toy> extends Toy_store {
 		return temp;
 	}
 	
+	/**
+	 * генрация иного шанса выпадения, зависящая от ставки и удачи пользователя, но основывающаяся на игзначальном шансе установленным магазином.
+	 * @param gamer игрок, для получения его удачи
+	 * @param toy - игрушка , для получения шанса установленного магазином
+	 * @param bet - ставка игрока, для реализации ее влияния на шанс выпадения.
+	 * @return новые "временные" шансы выпадения игрушки (действуют одну ставку).
+	 */
 	@Override
 	public ArrayList<Integer> generate_chance_drop(Gamer gamer, Toy toy, int bet) {
 		ArrayList<Integer> temp = this.search_toy_info(toy);
@@ -76,7 +92,12 @@ public class Store_of_4_toys<T extends Toy> extends Toy_store {
 		return new_chance;
 	}
 	
-	
+	/**
+	 * метод рандомного распределения выйнрышных позиций для определенного типа игрушек, каждый ход новые позиции, их количество определяется
+	 * тем самым временным шансом выпадения игрушки, что расчитался выше.
+	 * @param data принимает текущие првила выпадения данного типа игрушек
+	 * @return рандомно расчетные позиции в диапазоне 100 ячеек, заполненные по шансу выпадения.
+	 */
 	public HashSet<Integer> generate_chance_random(ArrayList<Integer> data){
 		HashSet<Integer> chance_toy = new HashSet<>();
 		Random rnd = new Random();
@@ -87,6 +108,11 @@ public class Store_of_4_toys<T extends Toy> extends Toy_store {
 		return chance_toy;
 	}
 	
+	/**
+	 * метод наполняет магазин игрушками после пуска, и дает возможность пользователю определить на
+	 * старте их цену, и шанс выпадения, количество тоже вводится, но корректируется автоматически после первого изменения числа игушек
+	 * до реального значения "со склада".
+	 */
 	public void generate_toys(){
 		Big_boss_red_cat cat1 = new Big_boss_red_cat();
 		Big_boss_red_cat cat2 = new Big_boss_red_cat();

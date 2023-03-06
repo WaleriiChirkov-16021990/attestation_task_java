@@ -45,6 +45,19 @@ public class Application {
 		this.enter_gamer = enter_gamer;
 	}
 	
+	/**
+	 * Запуск приложения...
+	 * Во время игры, будут отображаться ArrayListы информации о текущих игрушках, имитируя как бы экран игрового автомата?!
+	 * [цена за 1 игрушку, реальный остаток игрушек в магазине, шанс выпадения игрушки, установленный магазином( без доп расчетов удачи)]
+	 *
+	 * таких окон будет 4 ряда по 3 цифры
+	 *
+	 * последовательность отображения:
+	 * Big_boss_red_cat
+	 * Gray_bear_mila
+	 * Losk_black_snake
+	 * Yellow_iron_giraffe
+	 */
 	public void run_() {
 		this.getMy_store().generate_toys();
 		this.getUser().full_data_user();
@@ -57,10 +70,11 @@ public class Application {
 				new Printer_txt(new Txt_interface().getGreeting()).print();
 				new Printer_txt(new Txt_interface().getRules_info()).print();
 				while (true) {
-					System.out.println(this.getMy_store().getInfo_store_cat());
-					System.out.println(this.getMy_store().getInfo_store_mila());
-					System.out.println(this.getMy_store().getInfo_store_snake());
-					System.out.println(this.getMy_store().getInfo_store_giraffe());
+					// данныу выводы информации , иммитируют экран игрового автомата.
+					new Printer_txt(this.getMy_store().getInfo_store_cat().toString()).print();
+					new Printer_txt(this.getMy_store().getInfo_store_mila().toString()).print();
+					new Printer_txt(this.getMy_store().getInfo_store_snake().toString()).print();
+					new Printer_txt(this.getMy_store().getInfo_store_giraffe().toString()).print();
 					this.getEnter_gamer().get_input(new Txt_interface().getMenu());
 					if (this.getEnter_gamer().getInput().equals("1")) {
 						this.getUser().setStep(this.getUser().play(1));
@@ -72,7 +86,18 @@ public class Application {
 								new Printer_txt(new Txt_interface().getUoy_looser()).print();
 							}
 						} else {
+							new Printer_txt("Текущий баланс: " + this.getUser().getMoney()).print();
 							new Printer_txt(new Txt_interface().getYou_loose()).print();
+							this.getEnter_gamer().get_input(new Txt_interface().getYes_no());
+							if (this.getEnter_gamer().getInput().equals("y") || this.getEnter_gamer().getInput().equals("yes")){
+								this.getEnter_gamer().get_input(new Txt_interface().getCredit());
+								if (this.getEnter_gamer().is_number()){
+									this.getUser().setMoney(Integer.parseInt(this.getEnter_gamer().getInput()));
+								}
+								else {
+									new Printer_txt("Мы выдаем кредит только в местной валюте").print();
+								}
+							}
 						}
 					} else if (this.getEnter_gamer().getInput().equals("2")) {
 						this.getUser().setStep(this.getUser().play(5));
@@ -84,7 +109,18 @@ public class Application {
 								new Printer_txt(new Txt_interface().getUoy_looser()).print();
 							}
 						} else {
+							new Printer_txt("Текущий баланс: " + this.getUser().getMoney()).print();
 							new Printer_txt(new Txt_interface().getYou_loose()).print();
+							this.getEnter_gamer().get_input(new Txt_interface().getYes_no());
+							if (this.getEnter_gamer().getInput().equals("y") || this.getEnter_gamer().getInput().equals("yes")){
+								this.getEnter_gamer().get_input(new Txt_interface().getCredit());
+								if (this.getEnter_gamer().is_number()){
+									this.getUser().setMoney(Integer.parseInt(this.getEnter_gamer().getInput()));
+								}
+								else {
+									new Printer_txt("Мы выдаем кредит только в местной валюте").print();
+								}
+							}
 						}
 					} else if (this.getEnter_gamer().getInput().equals("3")) {
 						this.getUser().setStep(this.getUser().play(10));
@@ -96,7 +132,18 @@ public class Application {
 								new Printer_txt(new Txt_interface().getUoy_looser()).print();
 							}
 						} else {
+							new Printer_txt("Текущий баланс: " + this.getUser().getMoney()).print();
 							new Printer_txt(new Txt_interface().getYou_loose()).print();
+							this.getEnter_gamer().get_input(new Txt_interface().getYes_no());
+							if (this.getEnter_gamer().getInput().equals("y") || this.getEnter_gamer().getInput().equals("yes")){
+								this.getEnter_gamer().get_input(new Txt_interface().getCredit());
+								if (this.getEnter_gamer().is_number()){
+									this.getUser().setMoney(Integer.parseInt(this.getEnter_gamer().getInput()));
+								}
+								else {
+									new Printer_txt("Мы выдаем кредит только в местной валюте").print();
+								}
+							}
 						}
 					} else if (this.getEnter_gamer().getInput().equals("4")){
 						this.getEnter_gamer().get_input(new Txt_interface().getYou_bet_money());

@@ -11,6 +11,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 
+/**
+ * класс для записи выйгранной игрушка в файл json
+ * @param <T> ограничение наследниками Toy class
+ */
 public class Writer<T extends Toy> {
 	
 	private T toy;
@@ -33,6 +37,9 @@ public class Writer<T extends Toy> {
 		this.toy = toy;
 	}
 	
+	/**
+	 * метод записи в файл
+	 */
 	public void write_toy_drop(){
 		JSONObject object = new JSONObject();
 		object.put("Toy",this.getToy().toString());
