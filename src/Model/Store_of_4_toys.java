@@ -66,7 +66,7 @@ public class Store_of_4_toys<T extends Toy> extends Toy_store {
 	}
 	
 	/**
-	 * генрация иного шанса выпадения, зависящая от ставки и удачи пользователя, но основывающаяся на игзначальном шансе установленным магазином.
+	 * генерация иного шанса выпадения, зависящая от ставки и удачи пользователя, но основывающаяся на игзначальном шансе установленным магазином.
 	 * @param gamer игрок, для получения его удачи
 	 * @param toy - игрушка , для получения шанса установленного магазином
 	 * @param bet - ставка игрока, для реализации ее влияния на шанс выпадения.
@@ -80,11 +80,11 @@ public class Store_of_4_toys<T extends Toy> extends Toy_store {
 		if(gamer.getLuck() == 0 || new_chance.get(2) <= 0){
 			new_chance.set(2,0);
 		} else if (gamer.getLuck() == 100) {
-			new_chance.set(2,100);
+			new_chance.set(2,75);
 		} else {
 			pont = (new_chance.get(2) + (gamer.getLuck() + bet / 2) / 10) * 2; //решил пока без логорифмов
-			if (pont > 100){
-				new_chance.set(2,100);
+			if (pont > 75){
+				new_chance.set(2,75);
 			} else {
 				new_chance.set(2,pont);
 			}
