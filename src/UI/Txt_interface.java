@@ -13,6 +13,7 @@ public class Txt_interface {
 	private final String yes_no  = "y/n ? ";
 	private final String current_money = "Текущий баланс: ";
 	private final String no_credit = "Мы выдаем кредит только в местной валюте!";
+	private final String no_toys = "Вы пока не выйграли ни одной игрушки!";
 	
 	private final String tablo = "Tablo info of toys: ";
 	private final String game = "Попытаться выйграть супер игрушку? ";
@@ -107,6 +108,10 @@ public class Txt_interface {
 	
 	public String getGame() {
 		return game;
+	}
+	
+	public String getNo_toys() {
+		return no_toys;
 	}
 	
 	public String getNow_exit() {

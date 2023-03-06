@@ -87,18 +87,7 @@ public class Application {
 								new Printer_txt(new Txt_interface().getUoy_looser()).print();
 							}
 						} else {
-							new Printer_txt(new Txt_interface().getCurrent_money() + this.getUser().getMoney()).print();
-							new Printer_txt(new Txt_interface().getYou_loose()).print();
-							this.getEnter_gamer().get_input(new Txt_interface().getYes_no());
-							if (this.getEnter_gamer().getInput().equals("y") || this.getEnter_gamer().getInput().equals("yes")){
-								this.getEnter_gamer().get_input(new Txt_interface().getCredit());
-								if (this.getEnter_gamer().is_number()){
-									this.getUser().setMoney(Integer.parseInt(this.getEnter_gamer().getInput()));
-								}
-								else {
-									new Printer_txt(new Txt_interface().getNo_credit()).print();
-								}
-							}
+							this.offer_credit();
 						}
 					} else if (this.getEnter_gamer().getInput().equals("2")) {
 						this.getUser().setStep(this.getUser().play(5));
@@ -110,18 +99,7 @@ public class Application {
 								new Printer_txt(new Txt_interface().getUoy_looser()).print();
 							}
 						} else {
-							new Printer_txt(new Txt_interface().getCurrent_money() + this.getUser().getMoney()).print();
-							new Printer_txt(new Txt_interface().getYou_loose()).print();
-							this.getEnter_gamer().get_input(new Txt_interface().getYes_no());
-							if (this.getEnter_gamer().getInput().equals("y") || this.getEnter_gamer().getInput().equals("yes")){
-								this.getEnter_gamer().get_input(new Txt_interface().getCredit());
-								if (this.getEnter_gamer().is_number()){
-									this.getUser().setMoney(Integer.parseInt(this.getEnter_gamer().getInput()));
-								}
-								else {
-									new Printer_txt(new Txt_interface().getNo_credit()).print();
-								}
-							}
+							this.offer_credit();
 						}
 					} else if (this.getEnter_gamer().getInput().equals("3")) {
 						this.getUser().setStep(this.getUser().play(10));
@@ -133,18 +111,7 @@ public class Application {
 								new Printer_txt(new Txt_interface().getUoy_looser()).print();
 							}
 						} else {
-							new Printer_txt(new Txt_interface().getCurrent_money() + this.getUser().getMoney()).print();
-							new Printer_txt(new Txt_interface().getYou_loose()).print();
-							this.getEnter_gamer().get_input(new Txt_interface().getYes_no());
-							if (this.getEnter_gamer().getInput().equals("y") || this.getEnter_gamer().getInput().equals("yes")){
-								this.getEnter_gamer().get_input(new Txt_interface().getCredit());
-								if (this.getEnter_gamer().is_number()){
-									this.getUser().setMoney(Integer.parseInt(this.getEnter_gamer().getInput()));
-								}
-								else {
-									new Printer_txt(new Txt_interface().getNo_credit()).print();
-								}
-							}
+							this.offer_credit();
 						}
 					} else if (this.getEnter_gamer().getInput().equals("4")){
 						this.getEnter_gamer().get_input(new Txt_interface().getYou_bet_money());
@@ -158,18 +125,7 @@ public class Application {
 									new Printer_txt(new Txt_interface().getUoy_looser()).print();
 								}
 							} else {
-								new Printer_txt(new Txt_interface().getCurrent_money() + this.getUser().getMoney()).print();
-								new Printer_txt(new Txt_interface().getYou_loose()).print();
-								this.getEnter_gamer().get_input(new Txt_interface().getYes_no());
-								if (this.getEnter_gamer().getInput().equals("y") || this.getEnter_gamer().getInput().equals("yes")){
-									this.getEnter_gamer().get_input(new Txt_interface().getCredit());
-									if (this.getEnter_gamer().is_number()){
-										this.getUser().setMoney(Integer.parseInt(this.getEnter_gamer().getInput()));
-									}
-									else {
-										new Printer_txt(new Txt_interface().getNo_credit()).print();
-									}
-								}
+								this.offer_credit();
 							}
 						} else {
 							new Printer_txt("Вы ввели не число!");
@@ -195,7 +151,7 @@ public class Application {
 						if (this.getUser().getWon().size() > 0){
 							new Printer_toy<Toy>(this.getUser().getWon()).printe_linked();
 						} else {
-							new Printer_txt("Вы пока не выйграли ни одной игрушки!").print();
+							new Printer_txt(new Txt_interface().getNo_toys()).print();
 						}
 					} else if (this.getEnter_gamer().getInput().equals("7")) {
 						new Printer_toy<Toy>(this.getMy_store().getBig_boss_red_cat()).printe_linked();
@@ -217,6 +173,21 @@ public class Application {
 		} else {
 			new Printer_txt(new Txt_interface().getNow_exit()).print();
 			new Printer_txt(new Txt_interface().getPg_close()).print();
+		}
+	}
+	
+	private void offer_credit(){
+		new Printer_txt(new Txt_interface().getCurrent_money() + this.getUser().getMoney()).print();
+		new Printer_txt(new Txt_interface().getYou_loose()).print();
+		this.getEnter_gamer().get_input(new Txt_interface().getYes_no());
+		if (this.getEnter_gamer().getInput().equals("y") || this.getEnter_gamer().getInput().equals("yes")){
+			this.getEnter_gamer().get_input(new Txt_interface().getCredit());
+			if (this.getEnter_gamer().is_number()){
+				this.getUser().setMoney(Integer.parseInt(this.getEnter_gamer().getInput()));
+			}
+			else {
+				new Printer_txt(new Txt_interface().getNo_credit()).print();
+			}
 		}
 	}
 }
